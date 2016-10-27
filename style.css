@@ -4,7 +4,7 @@ Theme URI: http://athemes.com/theme/moesia
 Author: aThemes
 Author URI: http://athemes.com
 Description: Moesia is the business theme you need in order to build your presence on the Internet. Choose from eleven predefined blocks and build the homepage that best suits your company. Each of the homepage blocks can have a parallax background image and its own set of colors. Moesia also features a selection of Google Fonts, two types of layouts for the blog page, cool animations and effects, a parallax header and much more.
-Version: 1.40
+Version: 1.41
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: moesia
@@ -928,16 +928,18 @@ Structure
 	margin: 0;
 	text-transform: uppercase;
 	font-weight: 700;
-	padding-bottom: 10px;
 }
 .site-title a {
 	color: #fff;
 	text-decoration: none;
 }
 .site-description {
-	margin: 0;
+	margin: 15px 0 0;
 	font-size: 18px;
 	color: #DFDFDF;
+}
+.site-description:empty {
+	display: none;
 }
 .site-content {
 	margin-top: 60px;
@@ -1917,6 +1919,17 @@ Responsive
 	}
 	.widget-title:after {
 		display: none;
+	}
+}
+/* Center menu vertically */
+@media screen and (min-width: 1025px) {
+	.top-bar .container {
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
 	}
 }
 

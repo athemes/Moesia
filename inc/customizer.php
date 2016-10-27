@@ -6,27 +6,29 @@
  */
 
 function moesia_customize_register( $wp_customize ) {
-	/**
-	 * Add postMessage support for site title and description for the Theme Customizer.
-	 *
-	 */	
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+    /**
+     * Add postMessage support for site title and description for the Theme Customizer.
+     *
+     */ 
+    $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
     $wp_customize->remove_control('header_textcolor');
+    $wp_customize->remove_control('display_header_text');
+    $wp_customize->get_section('title_tagline')->priority = '5';
 
-	//Add a class for titles
+    //Add a class for titles
     class Moesia_Info extends WP_Customize_Control {
         public $type = 'info';
         public $label = '';
         public function render_content() {
         ?>
-			<h3 style="text-decoration: underline; color: #DA4141; text-transform: uppercase;"><?php echo esc_html( $this->label ); ?></h3>
+            <h3 style="text-decoration: underline; color: #DA4141; text-transform: uppercase;"><?php echo esc_html( $this->label ); ?></h3>
         <?php
         }
-    }	
+    }   
 
 
-	//___General___//
+    //___General___//
     $wp_customize->add_section(
         'moesia_general',
         array(
@@ -34,21 +36,21 @@ function moesia_customize_register( $wp_customize ) {
             'priority' => 9,
         )
     );
-	//Logo Upload
-	$wp_customize->add_setting(
-		'site_logo',
-		array(
-			'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
+    //Logo Upload
+    $wp_customize->add_setting(
+        'site_logo',
+        array(
+            'default-image' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
     $wp_customize->add_control(
         new WP_Customize_Image_Control(
             $wp_customize,
             'site_logo',
             array(
                'label'          => __( 'Upload your logo', 'moesia' ),
-			   'type' 			=> 'image',
+               'type'           => 'image',
                'section'        => 'moesia_general',
                'settings'       => 'site_logo',
                'priority' => 9,
@@ -76,21 +78,21 @@ function moesia_customize_register( $wp_customize ) {
             'step'  => 5,
         ),
     ) );    
-	//Favicon Upload
-	$wp_customize->add_setting(
-		'site_favicon',
-		array(
-			'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
+    //Favicon Upload
+    $wp_customize->add_setting(
+        'site_favicon',
+        array(
+            'default-image' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
     $wp_customize->add_control(
         new WP_Customize_Image_Control(
             $wp_customize,
             'site_favicon',
             array(
                'label'          => __( 'Upload your favicon', 'moesia' ),
-			   'type' 			=> 'image',
+               'type'           => 'image',
                'section'        => 'moesia_general',
                'settings'       => 'site_favicon',
                'priority' => 11,
@@ -102,7 +104,7 @@ function moesia_customize_register( $wp_customize ) {
         'apple_touch_144',
         array(
             'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
+            'sanitize_callback' => 'esc_url_raw',
         )
     );
     $wp_customize->add_control(
@@ -123,7 +125,7 @@ function moesia_customize_register( $wp_customize ) {
         'apple_touch_114',
         array(
             'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
+            'sanitize_callback' => 'esc_url_raw',
         )
     );
     $wp_customize->add_control(
@@ -144,7 +146,7 @@ function moesia_customize_register( $wp_customize ) {
         'apple_touch_72',
         array(
             'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
+            'sanitize_callback' => 'esc_url_raw',
         )
     );
     $wp_customize->add_control(
@@ -165,7 +167,7 @@ function moesia_customize_register( $wp_customize ) {
         'apple_touch_57',
         array(
             'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
+            'sanitize_callback' => 'esc_url_raw',
         )
     );
     $wp_customize->add_control(
@@ -181,23 +183,6 @@ function moesia_customize_register( $wp_customize ) {
             )
         )
     );
-    //SCroller
-	$wp_customize->add_setting(
-		'moesia_scroller',
-		array(
-			'sanitize_callback' => 'moesia_sanitize_checkbox',
-			'default' => 0,			
-		)		
-	);
-	$wp_customize->add_control(
-		'moesia_scroller',
-		array(
-			'type' => 'checkbox',
-			'label' => __('Check this box if you want to disable the custom scroller.', 'moesia'),
-			'section' => 'moesia_general',
-            'priority' => 16,			
-		)
-	);
     //Animations
     $wp_customize->add_setting(
         'moesia_animate',
@@ -389,7 +374,7 @@ function moesia_customize_register( $wp_customize ) {
             'step'  => 5,
         ),
     ) );       
-	//___Welcome area___//
+    //___Welcome area___//
     $wp_customize->add_section(
         'moesia_header',
         array(
@@ -398,28 +383,28 @@ function moesia_customize_register( $wp_customize ) {
         )
     );
     //Header title
-	$wp_customize->add_setting(
-	    'header_title',
-	    array(
-	        'default' => '',
-	        'sanitize_callback' => 'moesia_sanitize_text',
-	    )
-	);
-	$wp_customize->add_control(
-	    'header_title',
-	    array(
-	        'label' => __( 'Welcome title (not the site title)', 'moesia' ),
-	        'section' => 'moesia_header',
-	        'type' => 'text',
-	        'priority' => 13
-	    )
-	);
+    $wp_customize->add_setting(
+        'header_title',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'moesia_sanitize_text',
+        )
+    );
+    $wp_customize->add_control(
+        'header_title',
+        array(
+            'label' => __( 'Welcome title (not the site title)', 'moesia' ),
+            'section' => 'moesia_header',
+            'type' => 'text',
+            'priority' => 13
+        )
+    );
     //Welcome logo
     $wp_customize->add_setting(
         'header_logo',
         array(
             'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
+            'sanitize_callback' => 'esc_url_raw',
         )
     );
     $wp_customize->add_control(
@@ -456,56 +441,56 @@ function moesia_customize_register( $wp_customize ) {
         ),
     ) );        
    //Header description
-	$wp_customize->add_setting(
-	    'header_desc',
-	    array(
-	        'default' => '',
-	        'sanitize_callback' => 'moesia_sanitize_text',
-	    )
-	);
-	$wp_customize->add_control(
-	    'header_desc',
-	    array(
-	        'label' => __( 'Welcome message (not the site description)', 'moesia' ),
-	        'section' => 'moesia_header',
-	        'type' => 'text',
-	        'priority' => 16
-	    )
-	);	
+    $wp_customize->add_setting(
+        'header_desc',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'moesia_sanitize_text',
+        )
+    );
+    $wp_customize->add_control(
+        'header_desc',
+        array(
+            'label' => __( 'Welcome message (not the site description)', 'moesia' ),
+            'section' => 'moesia_header',
+            'type' => 'text',
+            'priority' => 16
+        )
+    );  
    //Header button text 
-	$wp_customize->add_setting(
-	    'header_btn_text',
-	    array(
-	        'default' => 'Download this theme',
-	        'sanitize_callback' => 'moesia_sanitize_text',
-	    )
-	);
-	$wp_customize->add_control(
-	    'header_btn_text',
-	    array(
-	        'label' => __( 'The text for the call to action button', 'moesia' ),
-	        'section' => 'moesia_header',
-	        'type' => 'text',
-	        'priority' => 17
-	    )
-	);
+    $wp_customize->add_setting(
+        'header_btn_text',
+        array(
+            'default' => 'Download this theme',
+            'sanitize_callback' => 'moesia_sanitize_text',
+        )
+    );
+    $wp_customize->add_control(
+        'header_btn_text',
+        array(
+            'label' => __( 'The text for the call to action button', 'moesia' ),
+            'section' => 'moesia_header',
+            'type' => 'text',
+            'priority' => 17
+        )
+    );
    //Header button link 
-	$wp_customize->add_setting(
-	    'header_btn_link',
-	    array(
-	        'default' => '',
-	        'sanitize_callback' => 'esc_url_raw',
-	    )
-	);
-	$wp_customize->add_control(
-	    'header_btn_link',
-	    array(
-	        'label' => __( 'The link for the call to action button', 'moesia' ),
-	        'section' => 'moesia_header',
-	        'type' => 'text',
-	        'priority' => 18
-	    )
-	);
+    $wp_customize->add_setting(
+        'header_btn_link',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        )
+    );
+    $wp_customize->add_control(
+        'header_btn_link',
+        array(
+            'label' => __( 'The link for the call to action button', 'moesia' ),
+            'section' => 'moesia_header',
+            'type' => 'text',
+            'priority' => 18
+        )
+    );
     //Activate
     $wp_customize->add_setting(
         'moesia_banner',
@@ -705,8 +690,8 @@ function moesia_customize_register( $wp_customize ) {
             'section' => 'moesia_menu',
             'priority' => 12,        
         )
-    );         	
-	//___FRONT PAGE COLORS___//
+    );          
+    //___FRONT PAGE COLORS___//
     $wp_customize->add_section(
         'moesia_fp_colors',
         array(
@@ -714,152 +699,152 @@ function moesia_customize_register( $wp_customize ) {
             'priority' => 21,
             'description' => __('Here you can change the colors for each type of front page section.', 'moesia'),
         )
-    );	
-	//***Services section
+    );  
+    //***Services section
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'services_section', array(
-		'label' => __('Services section', 'moesia'),
+        'label' => __('Services section', 'moesia'),
         'section' => 'moesia_fp_colors',
         'settings' => 'moesia_options[info]',
-		'priority' => 10
+        'priority' => 10
         ) )
     );
     //Background
-	$wp_customize->add_setting(
-		'services_bg',
-		array(
-			'default'			=> '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'services_bg',
-			array(
-				'label' => __('Services section background color', 'moesia'),
-				'section' => 'moesia_fp_colors',
-				'settings' => 'services_bg',
-				'priority' => 11
-			)
-		)
-	);
+    $wp_customize->add_setting(
+        'services_bg',
+        array(
+            'default'           => '#fff',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'services_bg',
+            array(
+                'label' => __('Services section background color', 'moesia'),
+                'section' => 'moesia_fp_colors',
+                'settings' => 'services_bg',
+                'priority' => 11
+            )
+        )
+    );
     //Title
-	$wp_customize->add_setting(
-		'services_title',
-		array(
-			'default'			=> '#444',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'services_title',
-			array(
-				'label' => __('Services section main title color', 'moesia'),
-				'section' => 'moesia_fp_colors',
-				'settings' => 'services_title',
-				'priority' => 12
-			)
-		)
-	);
+    $wp_customize->add_setting(
+        'services_title',
+        array(
+            'default'           => '#444',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'services_title',
+            array(
+                'label' => __('Services section main title color', 'moesia'),
+                'section' => 'moesia_fp_colors',
+                'settings' => 'services_title',
+                'priority' => 12
+            )
+        )
+    );
     //Title decoration
-	$wp_customize->add_setting(
-		'services_title_dec',
-		array(
-			'default'			=> '#ff6b53',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'services_title_dec',
-			array(
-				'label' => __('Services section main title decoration (Updates after you press Save&amp;Publish)', 'moesia'),
-				'section' => 'moesia_fp_colors',
-				'settings' => 'services_title_dec',
-				'priority' => 13
-			)
-		)
-	);
+    $wp_customize->add_setting(
+        'services_title_dec',
+        array(
+            'default'           => '#ff6b53',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'services_title_dec',
+            array(
+                'label' => __('Services section main title decoration (Updates after you press Save&amp;Publish)', 'moesia'),
+                'section' => 'moesia_fp_colors',
+                'settings' => 'services_title_dec',
+                'priority' => 13
+            )
+        )
+    );
     //Icons background
-	$wp_customize->add_setting(
-		'services_icon_bg',
-		array(
-			'default'			=> '#ff6b53',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'services_icon_bg',
-			array(
-				'label' => __('Services section icons background', 'moesia'),
-				'section' => 'moesia_fp_colors',
-				'settings' => 'services_icon_bg',
-				'priority' => 15
-			)
-		)
-	);
+    $wp_customize->add_setting(
+        'services_icon_bg',
+        array(
+            'default'           => '#ff6b53',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'services_icon_bg',
+            array(
+                'label' => __('Services section icons background', 'moesia'),
+                'section' => 'moesia_fp_colors',
+                'settings' => 'services_icon_bg',
+                'priority' => 15
+            )
+        )
+    );
     //Item title
-	$wp_customize->add_setting(
-		'services_item_title',
-		array(
-			'default'			=> '#ff6b53',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'services_item_title',
-			array(
-				'label' => __('Services section item titles', 'moesia'),
-				'section' => 'moesia_fp_colors',
-				'settings' => 'services_item_title',
-				'priority' => 16
-			)
-		)
-	);
+    $wp_customize->add_setting(
+        'services_item_title',
+        array(
+            'default'           => '#ff6b53',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'services_item_title',
+            array(
+                'label' => __('Services section item titles', 'moesia'),
+                'section' => 'moesia_fp_colors',
+                'settings' => 'services_item_title',
+                'priority' => 16
+            )
+        )
+    );
     //Body
-	$wp_customize->add_setting(
-		'services_body_text',
-		array(
-			'default'			=> '#aaa',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'services_body_text',
-			array(
-				'label' => __('Services section body', 'moesia'),
-				'section' => 'moesia_fp_colors',
-				'settings' => 'services_body_text',
-				'priority' => 17
-			)
-		)
-	);
+    $wp_customize->add_setting(
+        'services_body_text',
+        array(
+            'default'           => '#aaa',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'services_body_text',
+            array(
+                'label' => __('Services section body', 'moesia'),
+                'section' => 'moesia_fp_colors',
+                'settings' => 'services_body_text',
+                'priority' => 17
+            )
+        )
+    );
     //***Employees section
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'employees_section', array(
@@ -875,7 +860,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -896,7 +881,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -917,7 +902,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -938,7 +923,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#222',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -959,7 +944,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#727272',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -980,7 +965,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#aaa',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -999,7 +984,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'testimonials_section', array(
@@ -1015,7 +1000,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1036,7 +1021,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1057,7 +1042,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1078,7 +1063,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#222',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1099,7 +1084,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#aaa',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1120,7 +1105,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#f5f5f5',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1141,7 +1126,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#aaa',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1160,7 +1145,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'skills_section', array(
@@ -1176,7 +1161,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1197,7 +1182,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1218,7 +1203,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1239,7 +1224,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1260,7 +1245,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#aaa',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1279,7 +1264,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'facts_section', array(
@@ -1295,7 +1280,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1316,7 +1301,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1337,7 +1322,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1358,7 +1343,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1379,7 +1364,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#aaa',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1398,7 +1383,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'clients_section', array(
@@ -1414,7 +1399,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1435,7 +1420,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1456,7 +1441,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1477,7 +1462,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1496,7 +1481,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'blockquote_section', array(
@@ -1512,7 +1497,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1533,7 +1518,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1554,7 +1539,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1575,7 +1560,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1596,7 +1581,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#aaa',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1615,7 +1600,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'social_section', array(
@@ -1631,7 +1616,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1652,7 +1637,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1673,7 +1658,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1694,7 +1679,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1714,7 +1699,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'projects_section', array(
@@ -1730,7 +1715,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#fff',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1751,7 +1736,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#444',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1772,7 +1757,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1793,7 +1778,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1814,7 +1799,7 @@ function moesia_customize_register( $wp_customize ) {
         array(
             'default'           => '#ff6b53',
             'sanitize_callback' => 'sanitize_hex_color',
-			'transport'			=> 'postMessage'
+            'transport'         => 'postMessage'
         )
     );
     $wp_customize->add_control(
@@ -1833,7 +1818,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'latest_news_section', array(
@@ -1973,7 +1958,7 @@ function moesia_customize_register( $wp_customize ) {
     $wp_customize->add_setting('moesia_options[info]', array(
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'moesia_no_sanitize',			
+            'sanitize_callback' => 'moesia_no_sanitize',            
         )
     );
     $wp_customize->add_control( new Moesia_Info( $wp_customize, 'action_area_section', array(
@@ -2154,7 +2139,7 @@ function moesia_customize_register( $wp_customize ) {
                 'priority' => 11
             )
         )
-    );	
+    );  
     //Primary color
     $wp_customize->add_setting(
         'primary_color',
@@ -2525,7 +2510,7 @@ function moesia_customize_register( $wp_customize ) {
             'max'   => 30,
             'step'  => 1,
         ),
-    ) );	
+    ) );    
     //___Pro___//
     $wp_customize->add_section(
         'moesia_pro',
@@ -2537,7 +2522,7 @@ function moesia_customize_register( $wp_customize ) {
     );  
     //Pro
     $wp_customize->add_setting('moesia_options[info]', array(
-			'sanitize_callback' => 'moesia_no_sanitize',
+            'sanitize_callback' => 'moesia_no_sanitize',
             'type' => 'info_control',
             'capability' => 'edit_theme_options',
         )
@@ -2547,35 +2532,13 @@ function moesia_customize_register( $wp_customize ) {
         'settings' => 'moesia_options[info]',
         'priority' => 10
         ) )
-    );
-    //___Extensions___//
-    $wp_customize->add_section(
-        'moesia_extensions',
-        array(
-            'title' => __('Extensions', 'moesia'),
-            'priority' => 99,
-            'description' => __('A growing collection of free extensions for Moesia is available ', 'moesia') . '<a href="http://athemes.com/moesia-extensions">here</a>',
-        )
-    );  
-    //Extensions
-    $wp_customize->add_setting('moesia_options[info]', array(
-            'sanitize_callback' => 'moesia_no_sanitize',
-            'type' => 'info_control',
-            'capability' => 'edit_theme_options',
-        )
-    );
-    $wp_customize->add_control( new Moesia_Info( $wp_customize, 'extensions', array(
-        'section' => 'moesia_extensions',
-        'settings' => 'moesia_options[info]',
-        'priority' => 10
-        ) )
-    );    
+    );   
     //___Mobile header image___//
     $wp_customize->add_setting(
         'mobile_header',
         array(
             'default-image' => '',
-			'sanitize_callback' => 'esc_url_raw',
+            'sanitize_callback' => 'esc_url_raw',
         )
     );
     $wp_customize->add_control(
@@ -2701,11 +2664,11 @@ add_action( 'customize_register', 'moesia_customize_register' );
  */
 //Checkboxes
 function moesia_sanitize_checkbox( $input ) {
-	if ( $input == 1 ) {
-		return 1;
-	} else {
-		return '';
-	}
+    if ( $input == 1 ) {
+        return 1;
+    } else {
+        return '';
+    }
 }
 //Integers
 function moesia_sanitize_int( $input ) {
@@ -2782,6 +2745,6 @@ function moesia_no_sanitize( $input ) {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function moesia_customize_preview_js() {
-	wp_enqueue_script( 'moesia_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), true );
+    wp_enqueue_script( 'moesia_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), true );
 }
 add_action( 'customize_preview_init', 'moesia_customize_preview_js' );

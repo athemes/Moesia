@@ -178,11 +178,8 @@ require get_template_directory() . "/widgets/contact-info.php";
  * Enqueue scripts and styles.
  */
 function moesia_scripts() {
-
-	wp_enqueue_style( 'moesia-bootstrap', get_template_directory_uri() . '/css/bootstrap/bootstrap.min.css', array(), true );
 	
 	wp_enqueue_style( 'moesia-style', get_stylesheet_uri() );
-
 
 	if ( ! function_exists('moesia_fonts_extended') ) { //Check that the Moesia Fonts extension is not active
 	//Load the fonts
@@ -205,14 +202,6 @@ function moesia_scripts() {
 	wp_enqueue_script( 'moesia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'moesia-waypoints', get_template_directory_uri() . '/js/waypoints.min.js', array('jquery'), true );
-
-	if ( get_theme_mod('moesia_scroller') != 1 )  {
-		
-		wp_enqueue_script( 'moesia-nicescroll', get_template_directory_uri() . '/js/jquery.nicescroll.min.js', array('jquery'), true );	
-
-		wp_enqueue_script( 'moesia-nicescroll-init', get_template_directory_uri() . '/js/nicescroll-init.js', array('jquery'), true );
-
-	}	
 
 	if ( is_page_template('page_front-page.php') ) {
 	
@@ -251,16 +240,19 @@ function moesia_scripts() {
 	}
 
 	if ( is_home() && get_theme_mod('blog_layout') == 'masonry' ) {
-
-		wp_enqueue_script( 'masonry');
-
-		wp_enqueue_script( 'moesia-imagesloaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array(), true );
-
-		wp_enqueue_script( 'moesia-masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array(), true );		
+		wp_enqueue_script( 'moesia-masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array('masonry'), true );		
 	}
 
 }
 add_action( 'wp_enqueue_scripts', 'moesia_scripts' );
+
+/**
+ * Enqueues Bootstrap
+ */
+function moesia_enqueue_bootstrap() {
+	wp_enqueue_style( 'moesia-bootstrap', get_template_directory_uri() . '/css/bootstrap/bootstrap.min.css', array(), true );
+}
+add_action( 'wp_enqueue_scripts', 'moesia_enqueue_bootstrap', 9 );
 
 /**
  * Enqueues the necessary script for image uploading in widgets
@@ -349,6 +341,11 @@ function moesia_get_image_id($photo) {
 	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $photo )); 
     return $attachment[0]; 
 }
+
+/**
+ * Remove Types table
+ */
+add_filter('types_information_table', '__return_false');
 
 /**
  * Implement the Custom Header feature.

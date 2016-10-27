@@ -64,7 +64,7 @@ class Moesia_Video_Widget extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Video', 'moesia' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
