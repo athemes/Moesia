@@ -928,16 +928,18 @@ Structure
 	margin: 0;
 	text-transform: uppercase;
 	font-weight: 700;
-	padding-bottom: 10px;
 }
 .site-title a {
 	color: #fff;
 	text-decoration: none;
 }
 .site-description {
-	margin: 0;
+	margin: 15px 0 0;
 	font-size: 18px;
 	color: #DFDFDF;
+}
+.site-description:empty {
+	display: none;
 }
 .site-content {
 	margin-top: 60px;
@@ -1917,6 +1919,17 @@ Responsive
 	}
 	.widget-title:after {
 		display: none;
+	}
+}
+/* Center menu vertically */
+@media screen and (min-width: 1025px) {
+	.top-bar .container {
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
 	}
 }
 

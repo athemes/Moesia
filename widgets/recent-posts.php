@@ -69,7 +69,7 @@ class Moesia_Recent_Posts extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts', 'moesia' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );

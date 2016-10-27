@@ -51,7 +51,7 @@ class Moesia_Recent_Comments extends WP_Widget {
 		extract($args, EXTR_SKIP);
 		$output = '';
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments', 'moesia' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
