@@ -1964,3 +1964,10 @@ section .container {
 		font-size: 36px;
 	}
 }
+
+/* SiteOrigin Post Carousel Widget compatibility fix begin */
+.sow-carousel-thumbnail .overlay {
+    position: static;
+    height: 100% !important;
+}
+/* SiteOrigin Post Carousel Widget compatibility fix end */
