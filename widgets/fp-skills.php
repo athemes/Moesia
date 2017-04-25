@@ -173,7 +173,7 @@ class Moesia_Skills extends WP_Widget {
 				<?php if ( $title ) echo $before_title . '<span class="wow bounce">' . $title . '</span>' . $after_title; ?>
 				<?php if ($skills_desc !='') : ?>				
 					<div class="skills-desc col-md-6 col-sm-6 wow fadeInLeft">
-						<?php echo esc_textarea($skills_desc); ?>
+						<?php echo esc_html($skills_desc); ?>
 					</div>
 				<?php endif; ?>
 				<div class="skills-list col-md-6 col-sm-6">
