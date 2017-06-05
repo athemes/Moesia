@@ -143,7 +143,7 @@ Menus
 .main-navigation li {
 	float: left;
 	position: relative;
-	padding: 40px 10px;
+	padding: 10px;
 	text-transform: uppercase;
 	font-family: 'Roboto Condensed', sans-serif;
 }
@@ -1922,7 +1922,7 @@ Responsive
 	}
 }
 /* Center menu vertically */
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 992px) {
 	.top-bar .container {
 		display: -webkit-flex;
 		display: -ms-flexbox;
