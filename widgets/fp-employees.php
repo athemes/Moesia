@@ -3,7 +3,7 @@
 class Moesia_Employees extends WP_Widget {
 
 // constructor
-    function moesia_employees() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_employees_widget', 'description' => __( 'Display your team members in a stylish way.', 'moesia') );
         parent::__construct(false, $name = __('Moesia FP: Employees', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_employees_widget';	
