@@ -3,7 +3,7 @@
 class Moesia_Facts extends WP_Widget {
 
 // constructor
-    function moesia_facts() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_facts_widget', 'description' => __( 'Show your visitors some facts about your company.', 'moesia') );
         parent::__construct(false, $name = __('Moesia FP: Facts', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_facts_widget';
