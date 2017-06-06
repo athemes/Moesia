@@ -3,7 +3,7 @@
 class Moesia_Testimonials extends WP_Widget {
 
 // constructor
-    function moesia_testimonials() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_testimonials_widget', 'description' => __( 'Display testimonials from your clients.', 'moesia') );
         parent::__construct(false, $name = __('Moesia FP: Testimonials', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_testimonials_widget';		
