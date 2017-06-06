@@ -402,9 +402,22 @@ Widgets
 .widget-area .widget a {
 	color: #aaa;
 }
+.footer-widget-area section,
+.widget-area section {
+	margin-bottom: 30px;
+	-webkit-backface-visibility: hidden;
+}
 .footer-widget-area .widget:last-of-type,
 .widget-area .widget:last-of-type {
 	margin: 0;
+}
+@media (max-width: 767px) {
+	.footer-widget-area .widget:last-of-type {
+		margin: 0 0 30px;
+	}
+	.footer-widget-area .sidebar-column:last-of-type .widget:last-of-type {
+		margin: 0;
+	}
 }
 .widget-title,
 .widgettitle {
