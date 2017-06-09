@@ -3,7 +3,7 @@
 class Moesia_Contact_Info extends WP_Widget {
 
 // constructor
-    function moesia_contact_info() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_contact_info_widget', 'description' => __( 'Display your contact info', 'moesia') );
         parent::__construct(false, $name = __('Moesia: Contact info', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_contact_info';

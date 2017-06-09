@@ -3,7 +3,7 @@
 class Moesia_Video_Widget extends WP_Widget {
 
 // constructor
-    function moesia_video_widget() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_video_widget_widget', 'description' => __( 'Display a video in your sidebar.', 'moesia') );
         parent::__construct(false, $name = __('Moesia: Video', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_video_widget';

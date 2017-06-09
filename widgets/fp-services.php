@@ -3,7 +3,7 @@
 class Moesia_Services extends WP_Widget {
 
 // constructor
-    function moesia_services() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_services_widget', 'description' => __( 'Show what services you are able to provide.', 'moesia') );
         parent::__construct(false, $name = __('Moesia FP: Services', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_services_widget';	

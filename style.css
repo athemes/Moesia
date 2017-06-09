@@ -4,7 +4,7 @@ Theme URI: http://athemes.com/theme/moesia
 Author: aThemes
 Author URI: http://athemes.com
 Description: Moesia is the business theme you need in order to build your presence on the Internet. Choose from eleven predefined blocks and build the homepage that best suits your company. Each of the homepage blocks can have a parallax background image and its own set of colors. Moesia also features a selection of Google Fonts, two types of layouts for the blog page, cool animations and effects, a parallax header and much more.
-Version: 1.42
+Version: 1.43
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: moesia
@@ -143,7 +143,7 @@ Menus
 .main-navigation li {
 	float: left;
 	position: relative;
-	padding: 40px 10px;
+	padding: 10px;
 	text-transform: uppercase;
 	font-family: 'Roboto Condensed', sans-serif;
 }
@@ -402,9 +402,22 @@ Widgets
 .widget-area .widget a {
 	color: #aaa;
 }
+.footer-widget-area section,
+.widget-area section {
+	margin-bottom: 30px;
+	-webkit-backface-visibility: hidden;
+}
 .footer-widget-area .widget:last-of-type,
 .widget-area .widget:last-of-type {
 	margin: 0;
+}
+@media (max-width: 767px) {
+	.footer-widget-area .widget:last-of-type {
+		margin: 0 0 30px;
+	}
+	.footer-widget-area .sidebar-column:last-of-type .widget:last-of-type {
+		margin: 0;
+	}
 }
 .widget-title,
 .widgettitle {
@@ -1922,7 +1935,7 @@ Responsive
 	}
 }
 /* Center menu vertically */
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 992px) {
 	.top-bar .container {
 		display: -webkit-flex;
 		display: -ms-flexbox;

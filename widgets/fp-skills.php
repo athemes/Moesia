@@ -3,7 +3,7 @@
 class Moesia_Skills extends WP_Widget {
 
 // constructor
-    function moesia_skills() {
+    function __construct() {
 		$widget_ops = array('classname' => 'moesia_skills_widget', 'description' => __( 'Show your strongest five skills.', 'moesia') );
         parent::__construct(false, $name = __('Moesia FP: Skills', 'moesia'), $widget_ops);
 		$this->alt_option_name = 'moesia_skills_widget';	
