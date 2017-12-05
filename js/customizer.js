@@ -370,9 +370,9 @@
             $('body').css('font-size', newval + 'px' );
         } );
     });
-    wp.customize('widget_title_size',function( value ) {
+    wp.customize('fp_widget_title_size',function( value ) {
         value.bind( function( newval ) {
-            $('section .widget-title, .panel.widget .widget-title').css('font-size', newval + 'px' );
+            $('section .widget-title, .panel.widget .widget-title, .so-panel.widget .widget-title').css('font-size', newval + 'px' );
         } );
     });
     wp.customize('menu_size',function( value ) {
