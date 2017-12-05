@@ -394,9 +394,9 @@ function moesia_custom_styles($custom) {
         $custom .= "body { font-size:" . intval($body_size) . "px; }"."\n";
     }
     //Widget titles size
-    $widget_title_size = get_theme_mod( 'widget_title_size' );
-    if ( get_theme_mod( 'widget_title_size' )) {
-        $custom .= "@media (min-width: 499px) { section .widget-title, .panel.widget .widget-title, .so-panel.widget .widget-title { font-size:" . intval($widget_title_size) . "px; } }"."\n";
+    $fp_widget_title_size = get_theme_mod( 'fp_widget_title_size' );
+    if ( get_theme_mod( 'fp_widget_title_size' )) {
+        $custom .= "@media (min-width: 499px) { section .widget-title, .panel.widget .widget-title, .so-panel.widget .widget-title { font-size:" . intval($fp_widget_title_size) . "px; } }"."\n";
     }
     //Menu links font size
     $menu_size = get_theme_mod( 'menu_size' );
