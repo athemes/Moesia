@@ -1535,7 +1535,9 @@ Welcome area
 }
 .welcome-button {
 	text-align: center;
-	position: relative;	
+	position: relative;
+	display: inline-block;
+	margin-bottom: 5px;
 }
 .welcome-button,
 .call-to-action {
@@ -1815,7 +1817,6 @@ Responsive
 	}
 	.welcome-button {
 	    font-size: 14px;
-	    margin-top: 30px;
 	}
 	.blog-post {
 		width: 100%;
