@@ -1534,7 +1534,6 @@ Welcome area
 	margin-bottom: 30px;
 }
 .welcome-button {
-	width: 100%;
 	text-align: center;
 	position: relative;	
 }
@@ -1772,9 +1771,13 @@ Responsive
 	.entry-title {
 		font-size: 25px;
 	}
-	.welcome-desc,
-	.welcome-button {
-		display: none;
+	.welcome-title {
+		font-size: 12vw;
+		margin-bottom: 5vw;
+	}
+	.welcome-desc {
+		font-size: 5vw;
+		margin-bottom: 4vw;
 	}
 	.panel-grid-cell section,  
 	.panel.widget,
@@ -1803,14 +1806,10 @@ Responsive
 	section .widget-title {
 		font-size: 36px;
 	}
-	.welcome-title {
-		font-size: 24px;
-	}
 	.welcome-logo {
 		max-width: 100px;
 	}
 	.welcome-desc {
-		font-size: 20px;
 		color: #D8D8D8;
 		text-shadow: 0 0 2px #222, 0 0 2px #222;
 	}
