@@ -1777,6 +1777,9 @@ Responsive
 		font-size: 12vw;
 		margin-bottom: 5vw;
 	}
+	.welcome-logo {
+		margin-bottom: 5vw;
+	}
 	.welcome-desc {
 		font-size: 5vw;
 		margin-bottom: 4vw;
