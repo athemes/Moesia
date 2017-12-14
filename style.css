@@ -1584,11 +1584,6 @@ Welcome area
 	border-bottom: 6px double #ff6b53;
 	bottom: -10px;
 }
-.panel.widget,
-.so-panel.widget {
-	margin: 0 auto;
-	padding: 80px 30px;
-}
 .fullwidth {
 	width: 100%;
 }
@@ -1783,12 +1778,6 @@ Responsive
 	.welcome-desc {
 		font-size: 5vw;
 		margin-bottom: 4vw;
-	}
-	.panel-grid-cell section,  
-	.panel.widget,
-	.so-panel.widget {
-		padding-top: 40px;
-		padding-bottom: 40px;
 	}
 	.service,
 	.employee {
