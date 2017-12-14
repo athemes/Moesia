@@ -1779,6 +1779,10 @@ Responsive
 		font-size: 5vw;
 		margin-bottom: 4vw;
 	}
+	.panel-grid-cell section {
+ 		padding-top: 40px;
+ 		padding-bottom: 40px;
+	}
 	.service,
 	.employee {
 		padding-left: 5px;
