@@ -1980,3 +1980,9 @@ section .container {
     height: 100% !important;
 }
 /* SiteOrigin Post Carousel Widget compatibility fix end */
+
+.so-panel.widget.container {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
