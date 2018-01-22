@@ -50,6 +50,7 @@ class Moesia_Clients extends WP_Widget {
 	
 	// display widget
 	function widget($args, $instance) {
+		echo $args['before_widget'];
 		$cache = array();
 		if ( ! $this->is_preview() ) {
 			$cache = wp_cache_get( 'moesia_clients', 'widget' );
@@ -137,6 +138,6 @@ class Moesia_Clients extends WP_Widget {
 		} else {
 			ob_end_flush();
 		}
+		echo $args['after_widget'];
 	}
-	
 }

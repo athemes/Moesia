@@ -111,5 +111,4 @@ class Moesia_Contact_Info extends WP_Widget {
 			ob_end_flush();
 		}
 	}
-	
-}	
+}

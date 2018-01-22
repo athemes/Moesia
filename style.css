@@ -1,12 +1,12 @@
 /*
 Theme Name: Moesia
-Theme URI: http://athemes.com/theme/moesia
+Theme URI: https://athemes.com/theme/moesia/
 Author: aThemes
-Author URI: http://athemes.com
+Author URI: https://athemes.com
 Description: Moesia is the business theme you need in order to build your presence on the Internet. Choose from eleven predefined blocks and build the homepage that best suits your company. Each of the homepage blocks can have a parallax background image and its own set of colors. Moesia also features a selection of Google Fonts, two types of layouts for the blog page, cool animations and effects, a parallax header and much more.
-Version: 1.43
+Version: 1.44
 License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: moesia
 Domain Path: /languages/
 Tags: two-columns, three-columns, right-sidebar, custom-colors, custom-background, custom-header, custom-menu, featured-images, sticky-post, theme-options, threaded-comments, translation-ready
@@ -1534,9 +1534,10 @@ Welcome area
 	margin-bottom: 30px;
 }
 .welcome-button {
-	width: 100%;
 	text-align: center;
-	position: relative;	
+	position: relative;
+	display: inline-block;
+	margin-bottom: 5px;
 }
 .welcome-button,
 .call-to-action {
@@ -1582,11 +1583,6 @@ Welcome area
 	content: "";
 	border-bottom: 6px double #ff6b53;
 	bottom: -10px;
-}
-.panel.widget,
-.so-panel.widget {
-	margin: 0 auto;
-	padding: 80px 30px;
 }
 .fullwidth {
 	width: 100%;
@@ -1772,15 +1768,20 @@ Responsive
 	.entry-title {
 		font-size: 25px;
 	}
-	.welcome-desc,
-	.welcome-button {
-		display: none;
+	.welcome-title {
+		font-size: 12vw;
+		margin-bottom: 5vw;
 	}
-	.panel-grid-cell section,  
-	.panel.widget,
-	.so-panel.widget {
-		padding-top: 40px;
-		padding-bottom: 40px;
+	.welcome-logo {
+		margin-bottom: 5vw;
+	}
+	.welcome-desc {
+		font-size: 5vw;
+		margin-bottom: 4vw;
+	}
+	.panel-grid-cell section {
+ 		padding-top: 40px;
+ 		padding-bottom: 40px;
 	}
 	.service,
 	.employee {
@@ -1803,20 +1804,15 @@ Responsive
 	section .widget-title {
 		font-size: 36px;
 	}
-	.welcome-title {
-		font-size: 24px;
-	}
 	.welcome-logo {
 		max-width: 100px;
 	}
 	.welcome-desc {
-		font-size: 20px;
 		color: #D8D8D8;
 		text-shadow: 0 0 2px #222, 0 0 2px #222;
 	}
 	.welcome-button {
 	    font-size: 14px;
-	    margin-top: 30px;
 	}
 	.blog-post {
 		width: 100%;
@@ -1984,3 +1980,9 @@ section .container {
     height: 100% !important;
 }
 /* SiteOrigin Post Carousel Widget compatibility fix end */
+
+.so-panel.widget.container {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}

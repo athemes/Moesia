@@ -7,6 +7,7 @@
 	}
 
 	function widget($args, $instance) {
+		echo $args['before_widget'];
 		// Get menu
 		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;		
 
@@ -48,9 +49,8 @@
 					z-index: -1;
 				}
 			</style>
-		<?php endif; ?>			
-		
-		<?php
+		<?php endif;
+		echo $args['after_widget'];
 	}
 
 	function update( $new_instance, $old_instance ) {

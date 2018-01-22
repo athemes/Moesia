@@ -2473,14 +2473,14 @@ function moesia_customize_register( $wp_customize ) {
     ) );
     //Home page widget titles size
     $wp_customize->add_setting(
-        'widget_title_size',
+        'fp_widget_title_size',
         array(
             'sanitize_callback' => 'absint',
             'default'           => '56',
             'transport'         => 'postMessage'
         )      
     );
-    $wp_customize->add_control( 'widget_title_size', array(
+    $wp_customize->add_control( 'fp_widget_title_size', array(
         'type'        => 'number',
         'priority'    => 18,
         'section'     => 'moesia_typography',
