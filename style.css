@@ -1749,7 +1749,15 @@ Responsive
 	}
 	.home-masonry .hentry {
 		width: 280px;
-	}		
+	}
+	.welcome-title {
+		font-size: 6vw;
+		margin-bottom: 1vw;
+	}
+	.welcome-desc {
+		font-size: 5vw;
+		margin-bottom: 1vw;
+	}
 }
 @media only screen and (max-width: 650px) {
 	.home-masonry .hentry {
@@ -1768,16 +1776,8 @@ Responsive
 	.entry-title {
 		font-size: 25px;
 	}
-	.welcome-title {
-		font-size: 12vw;
-		margin-bottom: 5vw;
-	}
 	.welcome-logo {
 		margin-bottom: 5vw;
-	}
-	.welcome-desc {
-		font-size: 5vw;
-		margin-bottom: 4vw;
 	}
 	.panel-grid-cell section {
  		padding-top: 40px;
