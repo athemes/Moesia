@@ -1981,7 +1981,17 @@ section .container {
 }
 /* SiteOrigin Post Carousel Widget compatibility fix end */
 
-.so-panel.widget.container {
+.widget_moesia_services.container,
+.widget_moesia_action.container,
+.widget_moesia_clients.container,
+.widget_moesia_testimonials.container,
+.widget_moesia_employees.container,
+.widget_fp_social.container,
+.widget_moesia_latest_news.container,
+.widget_moesia_projects.container,
+.widget_moesia_facts.container,
+.widget_moesia_skills.container,
+.widget_moesia_blockquote.container {
     max-width: none;
     padding-left: 0;
     padding-right: 0;
