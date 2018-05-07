@@ -1998,3 +1998,21 @@ section .container {
     padding-right: 0;
 }
 /* Moesia widgets have internal .container, so this workaround disables default external .container styling end */
+
+/* Search results page styling begin */
+body.search-results #primary {
+    background-color: white;
+    margin-bottom: 60px;
+    padding: 30px;
+    border: 4px double #ebebeb;
+}
+
+body.search-results .paging-navigation {
+    margin-bottom: 0;
+}
+
+body.search-results .page-header,
+body.search-results .page-title {
+    margin-top: 0;
+}
+/* Search results page styling end */
