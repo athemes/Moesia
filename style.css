@@ -1981,6 +1981,7 @@ section .container {
 }
 /* SiteOrigin Post Carousel Widget compatibility fix end */
 
+/* Moesia widgets have internal .container, so this workaround disables default external .container styling begin */
 .widget_moesia_services.container,
 .widget_moesia_action.container,
 .widget_moesia_clients.container,
@@ -1996,3 +1997,4 @@ section .container {
     padding-left: 0;
     padding-right: 0;
 }
+/* Moesia widgets have internal .container, so this workaround disables default external .container styling end */
