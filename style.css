@@ -4,7 +4,7 @@ Theme URI: https://athemes.com/theme/moesia/
 Author: aThemes
 Author URI: https://athemes.com
 Description: Moesia is the business theme you need in order to build your presence on the Internet. Choose from eleven predefined blocks and build the homepage that best suits your company. Each of the homepage blocks can have a parallax background image and its own set of colors. Moesia also features a selection of Google Fonts, two types of layouts for the blog page, cool animations and effects, a parallax header and much more.
-Version: 1.44
+Version: 1.45
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: moesia
@@ -1981,8 +1981,45 @@ section .container {
 }
 /* SiteOrigin Post Carousel Widget compatibility fix end */
 
-.so-panel.widget.container {
+/* Moesia widgets have internal .container, so this workaround disables default external .container styling begin */
+.widget_moesia_services.container,
+.widget_moesia_action.container,
+.widget_moesia_clients.container,
+.widget_moesia_testimonials.container,
+.widget_moesia_employees.container,
+.widget_fp_social.container,
+.widget_moesia_latest_news.container,
+.widget_moesia_projects.container,
+.widget_moesia_facts.container,
+.widget_moesia_skills.container,
+.widget_moesia_blockquote.container {
     max-width: none;
     padding-left: 0;
     padding-right: 0;
 }
+/* Moesia widgets have internal .container, so this workaround disables default external .container styling end */
+
+/* Search results page styling begin */
+body.search-results #primary {
+    background-color: white;
+    margin-bottom: 60px;
+    padding: 30px;
+    border: 4px double #ebebeb;
+}
+
+body.search-results .paging-navigation {
+    margin-bottom: 0;
+}
+
+body.search-results .page-header,
+body.search-results .page-title {
+    margin-top: 0;
+}
+/* Search results page styling end */
+
+/* Center clients area when there are less than four begin */
+.clients-area .slick-track {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Center clients area when there are less than four end */
