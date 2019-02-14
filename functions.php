@@ -80,6 +80,10 @@ function moesia_setup() {
 		'default-color' => 'f5f5f5',
 		'default-image' => '',
 	) ) );
+
+	//aThemes Toolbox support
+	add_theme_support( 'athemes-toolbox-post-types', array( 'clients', 'services', 'employees', 'projects', 'testimonials' ) );
+
 }
 endif; // moesia_setup
 add_action( 'after_setup_theme', 'moesia_setup' );
@@ -398,13 +402,23 @@ function moesia_register_required_plugins() {
 			'slug'      => 'siteorigin-panels',
 			'required'  => false,
 		),
-
-		array(
-			'name'      => 'Toolset Types',
-			'slug'      => 'types',
-			'required'  => false,
-		),
 	);
+
+	if ( !function_exists('wpcf_init') ) {
+		$plugins = array(
+			array(
+				'name'      => 'Page Builder by SiteOrigin',
+				'slug'      => 'siteorigin-panels',
+				'required'  => false,
+			),
+
+			array(
+				'name'      => 'aThemes Toolbox - custom posts and fields for the Moesia theme',
+				'slug'      => 'athemes-toolbox',
+				'required'  => false,
+			),
+		);
+	}
 
 	$config = array(
 		'id'           => 'moesia',                // Unique ID for hashing notices for multiple instances of TGMPA.

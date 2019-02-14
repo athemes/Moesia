@@ -125,13 +125,7 @@ class Moesia_Employees extends WP_Widget {
 						$linkedin = get_post_meta( get_the_ID(), 'wpcf-linkedin', true ); 
 					?>
 					<div class="employee col-md-4 col-sm-6 col-xs-6">
-						<?php if ($photo != '') : ?>
-							<?php if ( $custom_link ) : ?>
-								<a href="<?php echo esc_url($custom_link); ?>"><img class="employee-photo wow zoomInDown" src="<?php echo esc_url($photo); ?>" alt="<?php the_title(); ?>"></a>
-							<?php else : ?>
-								<img class="employee-photo wow zoomInDown" src="<?php echo esc_url($photo); ?>" alt="<?php the_title(); ?>">
-							<?php endif; ?>
-						<?php elseif ( has_post_thumbnail() ) : ?>
+						<?php if ( has_post_thumbnail() ) : ?>
 							<div class="employee-photo wow zoomInDown">
 							<?php if ( $custom_link ) : ?>
 								<a href="<?php echo esc_url($custom_link); ?>"><?php the_post_thumbnail('moesia-employees-thumb'); ?></a>
@@ -139,7 +133,14 @@ class Moesia_Employees extends WP_Widget {
 								<?php the_post_thumbnail('moesia-employees-thumb'); ?>
 							<?php endif; ?>
 							</div>
+						<?php elseif ($photo != '') : ?>
+							<?php if ( $custom_link ) : ?>
+								<a href="<?php echo esc_url($custom_link); ?>"><img class="employee-photo wow zoomInDown" src="<?php echo esc_url($photo); ?>" alt="<?php the_title(); ?>"></a>
+							<?php else : ?>
+								<img class="employee-photo wow zoomInDown" src="<?php echo esc_url($photo); ?>" alt="<?php the_title(); ?>">
+							<?php endif; ?>
 						<?php endif; ?>
+
 						<h4 class="employee-name wow fadeInUp"><?php the_title(); ?></h4>
 						<?php if ($position != '') : ?>
 							<span class="employee-position wow fadeInUp"><?php echo esc_html($position); ?></span>

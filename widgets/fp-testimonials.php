@@ -130,11 +130,13 @@ class Moesia_Testimonials extends WP_Widget {
 					<?php $photo = get_post_meta( get_the_ID(), 'wpcf-client-photo', true ); ?>
 					<div class="testimonial col-md-6 col-sm-6 fadeInUp">
 						<div class="testimonial-body"><?php the_content(); ?></div>
-						<?php if ($photo != '') : ?>
-							<img class="client-photo col-md-4" src="<?php echo esc_url($photo); ?>" alt="<?php the_title(); ?>">
-						<?php elseif ( has_post_thumbnail() ) : ?>
+
+						<?php if ( has_post_thumbnail() ) : ?>
 							<div class="client-photo col-md-4"><?php the_post_thumbnail('moesia-testimonials-thumb'); ?></div>
+						<?php elseif ($photo != '') : ?>
+							<img class="client-photo col-md-4" src="<?php echo esc_url($photo); ?>" alt="<?php the_title(); ?>">
 						<?php endif; ?>
+
 						<h4 class="client-name col-md-8"><?php the_title(); ?></h4>
 						<?php if ($function != '') : ?>
 							<span class="client-function col-md-8"><?php echo esc_html($function); ?></span>

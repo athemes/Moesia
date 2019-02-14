@@ -9,13 +9,9 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<div class="entry-content">
-				<?php the_content(); ?>
-				<?php
-					wp_link_pages( array(
-						'before' => '<div class="page-links">' . __( 'Pages:', 'moesia' ),
-						'after'  => '</div>',
-					) );
-				?>
+				<?php while ( have_posts() ) : the_post(); ?>
+					<?php the_content(); ?>
+				<?php endwhile; ?>
 			</div><!-- .entry-content -->
 
 		</main><!-- #main -->
