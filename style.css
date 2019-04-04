@@ -1332,6 +1332,23 @@ section .widget-title:after {
 .client-function {
 	font-style: italic;
 }
+
+img.client-photo.col-md-4 {
+    margin-right: 25px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1199px) {
+    h4.client-name.col-md-8 {
+        margin-left: 30px;
+        margin-top: 10px;
+        margin-bottom: 3px;
+    }
+
+    span.client-function.col-md-8 {
+        margin-left: 30px;
+    }
+}
 /* Projects */
 .project-image {
 	position: relative;
