@@ -22,7 +22,7 @@
 		<div class="site-info container">
 			<a href="<?php echo esc_url( __( '//wordpress.org/', 'moesia' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'moesia' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %2$s by %1$s', 'moesia' ), 'aThemes', '<a href="//athemes.com/theme/moesia">Moesia</a>' ); ?>
+			<?php printf( __( 'Theme: %2$s by %1$s', 'moesia' ), 'aThemes', '<a href="//athemes.com/theme/moesia" rel="nofollow">Moesia</a>' ); ?>
 		</div><!-- .site-info -->
 		<?php tha_footer_bottom(); ?>
 	</footer><!-- #colophon -->
