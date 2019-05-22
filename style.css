@@ -2040,3 +2040,21 @@ body.search-results .page-title {
     margin-right: auto;
 }
 /* Center clients area when there are less than four end */
+
+/* Jetpack Infinite Scroll button styling begin */
+#infinite-handle button {
+    box-shadow: none;
+}
+#infinite-handle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#infinite-handle span {
+    background-color: #ff6b53;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+}
+/* Jetpack Infinite Scroll button styling end */
