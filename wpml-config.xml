@@ -1,0 +1,12 @@
+<wpml-config>
+  <admin-texts>
+    <key name='theme_mods_moesia'>
+      <key name='site_logo' />
+      <key name='header_title' />
+      <key name='header_desc' />
+      <key name='header_logo' />
+      <key name='header_btn_text' />
+      <key name='header_btn_link' />
+    </key>
+  </admin-texts>
+</wpml-config>
