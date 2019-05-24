@@ -83,12 +83,6 @@ function moesia_setup() {
 
 	//aThemes Toolbox support
 	add_theme_support( 'athemes-toolbox-post-types', array( 'clients', 'services', 'employees', 'projects', 'testimonials' ) );
-
-	//Jetpack Infinite Scroll support
-	add_theme_support( 'infinite-scroll', array(
-	 'container' => 'main',
-	 'footer' => 'page',
-	) );
 }
 endif; // moesia_setup
 add_action( 'after_setup_theme', 'moesia_setup' );
