@@ -4,7 +4,7 @@ Theme URI: https://athemes.com/theme/moesia/
 Author: aThemes
 Author URI: https://athemes.com
 Description: Moesia is the business theme you need in order to build your presence on the Internet. Choose from eleven predefined blocks and build the homepage that best suits your company. Each of the homepage blocks can have a parallax background image and its own set of colors. Moesia also features a selection of Google Fonts, two types of layouts for the blog page, cool animations and effects, a parallax header and much more.
-Version: 1.50
+Version: 1.51
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: moesia
@@ -2040,3 +2040,21 @@ body.search-results .page-title {
     margin-right: auto;
 }
 /* Center clients area when there are less than four end */
+
+/* Jetpack Infinite Scroll button styling begin */
+#infinite-handle button {
+    box-shadow: none;
+}
+#infinite-handle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#infinite-handle span {
+    background-color: #ff6b53;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+}
+/* Jetpack Infinite Scroll button styling end */
